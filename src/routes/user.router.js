@@ -12,8 +12,8 @@ const compareBcryptPassword = async (password, passwordHash) => {
 	return await bcrypt.compare(password, passwordHash);
 };
 
-app.post("/signup", async (req, res) => {
-	let { email, password } = req.body;
+app.post("/register", async (req, res) => {
+	let { email, password, name } = req.body;
 
 	let user = await UserModel.findOne({ email });
 	try {
@@ -26,6 +26,7 @@ app.post("/signup", async (req, res) => {
 		let newUser = new UserModel({
 			email,
 			password: await bcryptPassword(password),
+			name,
 		});
 		await newUser.save();
 		return res.status(201).send(newUser);

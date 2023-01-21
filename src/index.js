@@ -20,7 +20,7 @@ mongoose.set("strictQuery", false);
 app.use("/user", userRouter);
 
 app.get("/", (req, res) => {
-	res.send("Bug Tracker");
+	res.send("Grow Calculator");
 });
 
 app.listen(PORT, async () => {
